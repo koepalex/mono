@@ -3674,6 +3674,12 @@ namespace Mono.Unix.Native {
 			return sys_kill (pid, _sig);
 		}
 
+		public static int kill (int pid, RealTimeSignum rts)
+		{
+			int _sig = NativeConvert.FromRealTimeSignum (rts);
+			return sys_kill (pid, _sig);
+		}
+
 		private static object signal_lock = new object ();
 
 		[DllImport (LIBC, SetLastError=true, EntryPoint="strsignal")]
